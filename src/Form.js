@@ -1,9 +1,7 @@
 import {useState} from "react";
-import DisplayData from "./DisplayData";
 
+function Form({submittedData, setSubmittedData}) {
 
-function Form() {
-  const [submittedData, setSubmittedData] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -15,6 +13,8 @@ function Form() {
     setLastName(event.target.value);
   }
 
+  
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = { firstName: firstName, lastName: lastName };
@@ -22,20 +22,32 @@ function Form() {
     setSubmittedData(dataArray);
     setFirstName("");
     setLastName("");
-  }
+
+    fetch("http://localhost:3000/names", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((r) => r.json())
+      .then(storedNames => console.log(storedNames))
+  };
+
+
+  
+  
 
 return (
   <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <input type="text" onChange={handleFirstNameChange} value={firstName} />
         <input type="text" onChange={handleLastNameChange} value={lastName} />
         <button type="submit">Submit</button>
       </form>
-      <DisplayData submittedData={submittedData}/>
   </div>
 )
-  
 }
-
+  
 export default Form;
 
