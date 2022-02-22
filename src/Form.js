@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 function Form({submittedData, setSubmittedData}) {
-
+//remember state vs set state!
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -12,8 +12,6 @@ function Form({submittedData, setSubmittedData}) {
   function handleLastNameChange(event) {
     setLastName(event.target.value);
   }
-
-  
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,9 +32,6 @@ function Form({submittedData, setSubmittedData}) {
       .then(storedNames => console.log(storedNames))
   };
 
-
-  
-  
 
 return (
   <div>
