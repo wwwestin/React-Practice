@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 function Form({submittedData, setSubmittedData}) {
-//remember state vs set state!
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
