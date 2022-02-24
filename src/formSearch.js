@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FormCard () {
+function FormSearch () {
     return (
         <div>
 
@@ -8,4 +8,4 @@ function FormCard () {
     )
 }
 
-export default FormCard;
+export default FormSearch;
